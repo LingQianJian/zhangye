@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<!-- 开启组件扫描 -->
+	<context:component-scan base-package="com.yueqian"/>
+	<!--mvc注解扫描  -->
+	<mvc:annotation-driven/>
+	
+	<!-- 视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="prefix" value="/WEB-INF/"/>
+			<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	<!-- 配置拦截器 -->
+	<mvc:interceptors>
+			<mvc:interceptor>
+				<!--要拦截的请求地址  -->
+				<mvc:mapping path="/**"/>
+				<!--不被拦截的请求地址(非必要的)  -->
+				<mvc:exclude-mapping path="/study.do"/>
+				<!-- 拦截器的类 -->
+				<bean class="com.yueqian.interceptor.FirstInterceptor"/>
+			</mvc:interceptor>		
+	</mvc:interceptors>
+	
+
+</beans>
