@@ -1,0 +1,12 @@
+  spring  IOC分类
+ 				
+ 			 1、bean对象实例                             2、给对象的 成员变量注入参数
+ 			                     
+  1.1、通过配置spring的bean     1.2、 注解方式             |  2.1在spring的bean中配置          2.2注解方式
+  											   |	
+   -构造器创建bena实例                  - @Component  	   |	-构造器注入			@Value
+   -静态工厂方法创建bean实例            - @Name            |	-setter方法注入		        @Autowired
+   -实例工厂方法创建bean实例            - @Repository      |					@Resource
+   					- @Service         |					@Inject 
+   					- @Controller      |
+   
